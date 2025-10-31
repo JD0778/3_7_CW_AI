@@ -14,6 +14,7 @@ document.getElementById("addButton").addEventListener("click", function () {
 document.getElementById("MultiplicationButton").addEventListener("click", function () {
     let origin=document.getElementById("changeP").innerHTML;
     let table = document.getElementById("tableBody");
+    document.getElementById("tableSetting").innerHTML = "Multiplication Table"
     let arr=[];
     for(let a=0;a<10;a++){
         arr.push(parseInt(origin)*(a+1));
@@ -27,26 +28,15 @@ document.getElementById("MultiplicationButton").addEventListener("click", functi
 document.getElementById("BinaryButton").addEventListener("click", function () {
     let origin=document.getElementById("changeP").innerHTML;
     let table = document.getElementById("tableBody");
+    document.getElementById("tableSetting").innerHTML = "Binary Table"
     let arr=[];
     for(let a=0;a<10;a++){
-        
-
-        decimal= arr[a]
-        (decimal >>> 0).toString(2);
-
+        let decimal = parseInt(origin)*(a+1);
+        let binary = decimal.toString(2);
+        arr.push(binary);
         const row = table.rows[a];
         const secondCell = row.cells[1];
-        secondCell.innerHTML = decimal;
+        secondCell.innerHTML = arr[a];
     }
     document.getElementById("table").innerHTML=arr.join(", ");
 })
-
-function decimaltobinary(decimal) {
-    let binary ="";
-    while (decimal > 0) {
-      const remainder = decimal % 2;
-      binary = remainder + binary;
-      decimal = Math.floor(decimal / 2);
-    }
-    return binary;
-  }
